@@ -8,72 +8,64 @@ interface MissingValuesChartProps {
 export default function MissingValuesChart({
   columns,
 }: MissingValuesChartProps) {
-  const missingColumns = columns
+  const entries = columns
     .filter((column) => column.missing_count > 0)
     .sort((a, b) => b.missing_count - a.missing_count);
 
-  if (missingColumns.length === 0) {
+  if (entries.length === 0) {
     return (
-      <div className="rounded-lg bg-emerald-50 p-4 text-sm text-emerald-800">
-        No missing values were detected.
+      <div className="rounded-xl border border-[#B7D8CC] bg-[#E0F0E9] px-4 py-6 text-sm text-[#115E59]">
+        No missing values were reported in this dataset.
       </div>
     );
   }
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="min-w-0">
       <Plot
         data={[
           {
             type: "bar",
-            x: missingColumns.map((column) => column.name),
-            y: missingColumns.map((column) => column.missing_count),
+            orientation: "h",
+            x: entries.map((column) => column.missing_count),
+            y: entries.map((column) => column.name),
             marker: {
-              color: "#0f766e",
-              line: {
-                color: "#115e59",
-                width: 1,
-              },
+              color: entries.map((column) =>
+                column.missing_percent >= 30 ? "#C28B54" : "#0F766E",
+              ),
+              line: { color: "#FFFCF6", width: 1 },
             },
-            hovertemplate:
-              "Column: %{x}<br>Missing values: %{y}<extra></extra>",
+            hovertemplate: "%{y}<br>Missing values: %{x}<extra></extra>",
           },
         ]}
         layout={{
           autosize: true,
-          height: 320,
-          margin: {
-            l: 55,
-            r: 20,
-            t: 20,
-            b: 80,
-          },
+          height: Math.max(240, Math.min(560, entries.length * 42 + 80)),
+          margin: { l: 125, r: 20, t: 12, b: 45 },
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",
-          font: {
-            family: "Inter, sans-serif",
-            color: "#475569",
-          },
+          showlegend: false,
           xaxis: {
-            title: { text: "Column" },
-            automargin: true,
+            title: { text: "Missing cells" },
+            rangemode: "tozero",
+            gridcolor: "#E3D8C6",
+            zerolinecolor: "#D7CBB8",
+            tickfont: { color: "#60716A" },
+            titlefont: { color: "#60716A" },
           },
           yaxis: {
-            title: { text: "Missing values" },
-            rangemode: "tozero",
-            dtick: 1,
+            autorange: "reversed",
+            automargin: true,
+            tickfont: { color: "#344A43" },
           },
-          showlegend: false,
+          font: {
+            family: "Inter, ui-sans-serif, system-ui, sans-serif",
+            color: "#253532",
+          },
         }}
-        config={{
-          responsive: true,
-          displayModeBar: false,
-        }}
+        config={{ responsive: true, displayModeBar: false }}
         useResizeHandler
-        style={{
-          width: "100%",
-          height: "320px",
-        }}
+        style={{ width: "100%" }}
       />
     </div>
   );

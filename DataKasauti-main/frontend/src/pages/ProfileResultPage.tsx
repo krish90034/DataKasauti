@@ -62,18 +62,22 @@ function SummaryCard({
   icon: Icon,
 }: SummaryCardProps) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5">
+    <div className="rounded-2xl border border-[#E3D8C6] bg-[#FFFCF6] p-5 shadow-[0_8px_28px_rgba(72,61,43,0.04)]">
       <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-medium text-slate-500">{label}</p>
+        <p className="text-sm font-medium text-[#728078]">{label}</p>
 
-        <Icon size={20} className="shrink-0 text-teal-700" aria-hidden="true" />
+        <Icon
+          size={20}
+          className="shrink-0 text-[#0F766E]"
+          aria-hidden="true"
+        />
       </div>
 
-      <p className="mt-3 text-2xl font-bold tracking-tight text-slate-900">
+      <p className="mt-3 text-2xl font-bold tracking-tight text-[#253532]">
         {value}
       </p>
 
-      <p className="mt-1 text-xs text-slate-500">{description}</p>
+      <p className="mt-1 text-xs text-[#728078]">{description}</p>
     </div>
   );
 }
@@ -89,7 +93,7 @@ interface StatsCellProps {
 
 function StatsCell({ stats, field }: StatsCellProps) {
   return (
-    <td className="whitespace-nowrap px-4 py-3 text-sm text-slate-600">
+    <td className="whitespace-nowrap px-4 py-3 text-sm text-[#596B64]">
       {formatNumber(stats?.[field])}
     </td>
   );
@@ -107,7 +111,7 @@ function WarningItem({ warning }: { warning: ProfileWarning }) {
   };
 
   return (
-    <div className="flex items-start gap-3 border-b border-slate-100 py-3 last:border-b-0">
+    <div className="flex items-start gap-3 border-b border-[#EDE4D6] py-3 last:border-b-0">
       <AlertTriangle
         size={19}
         className="mt-0.5 shrink-0 text-amber-600"
@@ -116,20 +120,20 @@ function WarningItem({ warning }: { warning: ProfileWarning }) {
 
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-semibold text-slate-800">
+          <span className="text-sm font-semibold text-[#344943]">
             {warning.code.replace(/_/g, " ")}
           </span>
 
           <span
             className={`rounded-full px-2 py-1 text-xs font-semibold ${
-              severityStyles[warning.severity] ?? "bg-slate-100 text-slate-700"
+              severityStyles[warning.severity] ?? "bg-[#EFE7DB] text-[#465A54]"
             }`}
           >
             {warning.severity}
           </span>
         </div>
 
-        <p className="mt-1 break-words text-sm text-slate-600">
+        <p className="mt-1 break-words text-sm text-[#596B64]">
           {warning.message}
         </p>
       </div>
@@ -148,25 +152,25 @@ export default function ProfileResultPage() {
 
   if (!profileResult) {
     return (
-      <section className="mx-auto max-w-xl rounded-2xl border border-slate-200 bg-white p-8 text-center">
+      <section className="mx-auto max-w-xl rounded-2xl border border-[#E3D8C6] bg-[#FFFCF6] p-8 text-center">
         <FileSpreadsheet
           size={42}
-          className="mx-auto text-teal-700"
+          className="mx-auto text-[#0F766E]"
           aria-hidden="true"
         />
 
-        <h2 className="mt-4 text-xl font-bold text-slate-900">
+        <h2 className="mt-4 text-xl font-bold text-[#253532]">
           No scan results yet
         </h2>
 
-        <p className="mt-2 text-sm leading-6 text-slate-500">
+        <p className="mt-2 text-sm leading-6 text-[#728078]">
           Upload a CSV file and run a data-quality scan to see its statistics,
           missing values, duplicates, and preview.
         </p>
 
         <Link
           to="/"
-          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-teal-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-800"
+          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#0F766E] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#115E59]"
         >
           <ArrowLeft size={17} />
           Back to Upload
@@ -189,26 +193,26 @@ export default function ProfileResultPage() {
         <div>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-teal-700 hover:text-teal-900"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#0F766E] hover:text-[#153B38]"
           >
             <ArrowLeft size={16} />
             Back to Upload
           </Link>
 
-          <p className="mt-4 text-sm font-medium text-teal-700">
+          <p className="mt-4 text-sm font-medium text-[#0F766E]">
             DATAKASAUTI WORKSPACE
           </p>
 
-          <h2 className="mt-1 break-words text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          <h2 className="mt-1 break-words text-2xl font-bold tracking-tight text-[#253532] sm:text-3xl">
             Profile Results
           </h2>
 
-          <p className="mt-2 break-all text-sm text-slate-500">
+          <p className="mt-2 break-all text-sm text-[#728078]">
             {profileResult.filename}
           </p>
         </div>
 
-        <div className="flex items-center gap-2 self-start rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800">
+        <div className="flex items-center gap-2 self-start rounded-lg border border-[#B7D8CC] bg-[#E0F0E9] px-3 py-2 text-sm font-medium text-[#115E59]">
           <CheckCircle2 size={17} />
           Scan completed
         </div>
@@ -248,26 +252,26 @@ export default function ProfileResultPage() {
 
       {/* FILE INFORMATION */}
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
-        <h3 className="font-semibold text-slate-900">File Information</h3>
+      <section className="rounded-2xl border border-[#E3D8C6] bg-[#FFFCF6] p-5 shadow-[0_8px_28px_rgba(72,61,43,0.04)]">
+        <h3 className="font-semibold text-[#253532]">File Information</h3>
 
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div>
-            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+            <p className="text-xs font-medium uppercase tracking-wide text-[#728078]">
               File name
             </p>
 
-            <p className="mt-1 break-all text-sm font-medium text-slate-800">
+            <p className="mt-1 break-all text-sm font-medium text-[#344943]">
               {profileResult.filename}
             </p>
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+            <p className="text-xs font-medium uppercase tracking-wide text-[#728078]">
               File size
             </p>
 
-            <p className="mt-1 text-sm font-medium text-slate-800">
+            <p className="mt-1 text-sm font-medium text-[#344943]">
               {formatBytes(profileResult.file_size_bytes)}
             </p>
           </div>
@@ -276,13 +280,13 @@ export default function ProfileResultPage() {
 
       {/* PLOTLY MISSING VALUES CHART */}
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-2xl border border-[#E3D8C6] bg-[#FFFCF6] p-5 shadow-[0_8px_28px_rgba(72,61,43,0.04)]">
         <div>
-          <h3 className="text-lg font-semibold text-slate-900">
+          <h3 className="text-lg font-semibold text-[#253532]">
             Missing Values by Column
           </h3>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-[#728078]">
             Number of missing cells detected in each column.
           </p>
         </div>
@@ -294,26 +298,26 @@ export default function ProfileResultPage() {
 
       {/* COLUMN STATISTICS */}
 
-      <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        <div className="border-b border-slate-200 p-5">
-          <h3 className="text-lg font-semibold text-slate-900">
+      <section className="overflow-hidden rounded-2xl border border-[#E3D8C6] bg-[#FFFCF6]">
+        <div className="border-b border-[#E3D8C6] p-5">
+          <h3 className="text-lg font-semibold text-[#253532]">
             Column Statistics
           </h3>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-[#728078]">
             Data types, missing percentages, unique values, and numerical
             statistics.
           </p>
         </div>
 
         {columns.length === 0 ? (
-          <p className="p-5 text-sm text-slate-500">
+          <p className="p-5 text-sm text-[#728078]">
             No column statistics were returned by the API.
           </p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[950px] border-collapse text-left">
-              <thead className="bg-slate-50">
+              <thead className="bg-[#F5EFE5]">
                 <tr>
                   {[
                     "Column",
@@ -328,7 +332,7 @@ export default function ProfileResultPage() {
                   ].map((heading) => (
                     <th
                       key={heading}
-                      className="whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500"
+                      className="whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wide text-[#728078]"
                     >
                       {heading}
                     </th>
@@ -336,28 +340,28 @@ export default function ProfileResultPage() {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-[#EEE5D6]">
                 {columns.map((column: ColumnProfile) => (
-                  <tr key={column.name} className="hover:bg-slate-50">
-                    <td className="max-w-48 break-all px-4 py-3 text-sm font-medium text-slate-900">
+                  <tr key={column.name} className="hover:bg-[#F5EFE5]">
+                    <td className="max-w-48 break-all px-4 py-3 text-sm font-medium text-[#253532]">
                       {column.name}
                     </td>
 
                     <td className="px-4 py-3">
-                      <span className="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700">
+                      <span className="rounded-md bg-[#EFE7DB] px-2 py-1 text-xs font-medium text-[#465A54]">
                         {column.detected_type}
                       </span>
                     </td>
 
-                    <td className="px-4 py-3 text-sm text-slate-600">
+                    <td className="px-4 py-3 text-sm text-[#596B64]">
                       {formatNumber(column.missing_count)}
                     </td>
 
-                    <td className="px-4 py-3 text-sm text-slate-600">
+                    <td className="px-4 py-3 text-sm text-[#596B64]">
                       {formatNumber(column.missing_percent)}%
                     </td>
 
-                    <td className="px-4 py-3 text-sm text-slate-600">
+                    <td className="px-4 py-3 text-sm text-[#596B64]">
                       {formatNumber(column.unique_count)}
                     </td>
 
@@ -375,17 +379,17 @@ export default function ProfileResultPage() {
 
       {/* WARNINGS */}
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
-        <h3 className="text-lg font-semibold text-slate-900">
+      <section className="rounded-2xl border border-[#E3D8C6] bg-[#FFFCF6] p-5 shadow-[0_8px_28px_rgba(72,61,43,0.04)]">
+        <h3 className="text-lg font-semibold text-[#253532]">
           Data Quality Warnings
         </h3>
 
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-[#728078]">
           Issues reported by the backend scanner.
         </p>
 
         {warnings.length === 0 ? (
-          <div className="mt-4 flex items-center gap-2 rounded-lg bg-emerald-50 p-4 text-sm text-emerald-800">
+          <div className="mt-4 flex items-center gap-2 rounded-lg bg-[#E0F0E9] p-4 text-sm text-[#115E59]">
             <CheckCircle2 size={18} />
             No warnings were returned by the scanner.
           </div>
@@ -400,36 +404,36 @@ export default function ProfileResultPage() {
 
       {/* DATA PREVIEW */}
 
-      <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        <div className="border-b border-slate-200 p-5">
-          <h3 className="text-lg font-semibold text-slate-900">Data Preview</h3>
+      <section className="overflow-hidden rounded-2xl border border-[#E3D8C6] bg-[#FFFCF6]">
+        <div className="border-b border-[#E3D8C6] p-5">
+          <h3 className="text-lg font-semibold text-[#253532]">Data Preview</h3>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-[#728078]">
             Showing up to 20 rows returned by the backend.
           </p>
         </div>
 
         {previewRows.length === 0 ? (
-          <p className="p-5 text-sm text-slate-500">
+          <p className="p-5 text-sm text-[#728078]">
             No preview rows were returned by the API.
           </p>
         ) : columns.length === 0 ? (
-          <p className="p-5 text-sm text-slate-500">
+          <p className="p-5 text-sm text-[#728078]">
             Preview rows are available, but column metadata is missing.
           </p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-max border-collapse text-left">
-              <thead className="bg-slate-50">
+              <thead className="bg-[#F5EFE5]">
                 <tr>
-                  <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500">
+                  <th className="px-4 py-3 text-xs font-semibold uppercase text-[#728078]">
                     #
                   </th>
 
                   {columns.map((column) => (
                     <th
                       key={column.name}
-                      className="whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase text-slate-500"
+                      className="whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase text-[#728078]"
                     >
                       {column.name}
                     </th>
@@ -437,17 +441,17 @@ export default function ProfileResultPage() {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-[#EEE5D6]">
                 {previewRows.map((row, rowIndex) => (
-                  <tr key={rowIndex} className="hover:bg-slate-50">
-                    <td className="px-4 py-3 text-xs text-slate-400">
+                  <tr key={rowIndex} className="hover:bg-[#F5EFE5]">
+                    <td className="px-4 py-3 text-xs text-[#8C958F]">
                       {rowIndex + 1}
                     </td>
 
                     {columns.map((column, columnIndex) => (
                       <td
                         key={`${column.name}-${columnIndex}`}
-                        className="max-w-56 truncate px-4 py-3 text-sm text-slate-600"
+                        className="max-w-56 truncate px-4 py-3 text-sm text-[#596B64]"
                         title={row[columnIndex] ?? ""}
                       >
                         {row[columnIndex] ?? ""}
@@ -466,7 +470,7 @@ export default function ProfileResultPage() {
       <div className="flex justify-end">
         <Link
           to="/clean"
-          className="inline-flex items-center gap-2 rounded-lg bg-teal-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-800"
+          className="inline-flex items-center gap-2 rounded-lg bg-[#0F766E] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#115E59]"
         >
           Review Cleaning Options
           <ArrowLeft size={16} className="rotate-180" />
