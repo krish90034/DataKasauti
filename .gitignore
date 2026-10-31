@@ -1,0 +1,32 @@
+# Editor and operating system
+.vscode/
+**/.vscode/
+.DS_Store
+Thumbs.db
+
+# Node.js
+**/node_modules/
+**/dist/
+
+# Environment variables and secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Maven build output
+**/target/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Local backups and archives
+*.zip
+*.bak
+*.old
+
+# Local backend testing files only
+/DataKasauti-main/backend/*.csv
+/DataKasauti-main/backend/*.json
+/DataKasauti-main/backend/*.txt
+/DataKasauti-main/backend/*.tmp

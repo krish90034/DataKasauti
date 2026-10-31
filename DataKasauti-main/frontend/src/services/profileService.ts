@@ -6,7 +6,7 @@ export async function profileCsv(file: File): Promise<ProfileResponse> {
 
   formData.append("file", file);
 
-  return apiRequest<ProfileResponse>("/api/v1/profile", {
+  return apiRequest<ProfileResponse>("/profile", {
     method: "POST",
     body: formData,
   });

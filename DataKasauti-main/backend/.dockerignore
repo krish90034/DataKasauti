@@ -1,0 +1,9 @@
+/target/
+/.git/
+/*.zip
+/*.csv
+/*.json
+/*.txt
+/.env*
+*.log
+*.tmp

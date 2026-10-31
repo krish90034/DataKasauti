@@ -15,7 +15,7 @@ export async function compareDatasets(
     formData.append("key_column", keyColumn.trim());
   }
 
-  return apiRequest<CompareResponse>("/api/v1/compare", {
+  return apiRequest<CompareResponse>("/compare", {
     method: "POST",
     body: formData,
   });
